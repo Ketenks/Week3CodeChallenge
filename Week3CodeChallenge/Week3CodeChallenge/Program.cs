@@ -16,7 +16,7 @@ namespace Week3CodeChallenge
             Console.WriteLine("\n");
             EvenFibonacciSequencer(1000000);
             Console.WriteLine("\n");
-            LongestCollatzSequence();
+            LongestCollatzSequence(1000000);
 
             Console.ReadKey();
         }
@@ -108,18 +108,19 @@ namespace Week3CodeChallenge
             }
 
         //write the collatz sequence...whatever that is
-        static void LongestCollatzSequence()
+        static void LongestCollatzSequence(int input)
             {
                 
                 int n = 0;
                 int n1 = 0;
-                long termCount = 0;
+                int maxN = 0;
+                long termCount = 1;
                 long holdingTank = 0;
                 
 
                 //increment n each time
                 //then run the collatz for each n
-                while (n < 1000000)
+                while (n < input)
                 {
                     n++;
 
@@ -154,15 +155,16 @@ namespace Week3CodeChallenge
                     {
                         
                         holdingTank = termCount;
+                        maxN = n;
                     }
                     //reset the flippin' variable---it counts every term for every loop otherwise!!! remember to reset counting variables if necessary
-                    termCount = 0;
+                    termCount = 1;
                 }
 
 
                 //write output to the console
                 Console.WriteLine("LONGESTCOLLATZSEQUENCE\n");                                   
-                Console.WriteLine("Starting Number: " + n);                  
+                Console.WriteLine("Starting Number: " + maxN);                  
                 Console.WriteLine("Longest Collatz Sequence: " + holdingTank);
            
         }
