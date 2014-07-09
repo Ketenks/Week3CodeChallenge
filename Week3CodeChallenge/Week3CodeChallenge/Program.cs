@@ -27,9 +27,7 @@ namespace Week3CodeChallenge
             //set parameters for the while loop for checking maxPrime
             long number = 1;
             long foundPrime = 0;
-
-            //this list collects each prime number as it is found
-            List<long> intList = new List<long> { };
+            long prime = 0;          
 
             if (maxPrime == 0)
             {
@@ -48,7 +46,7 @@ namespace Week3CodeChallenge
                      if (number == 2)
                     {
                         foundPrime++;
-                        intList.Add(number);
+                        prime = number;
 
                     }
                      else
@@ -67,7 +65,10 @@ namespace Week3CodeChallenge
                         if (numCount == 0)
                         {
                             foundPrime++;
-                            intList.Add(number);
+                            if (prime < number)
+                            {
+                                prime = (number);
+                            }
                         }
                         
                     }
@@ -75,7 +76,7 @@ namespace Week3CodeChallenge
                 //write the final number of intList{} to the console
                 Console.WriteLine("FINDPRIMES\n");
                 Console.WriteLine("MaxPrime: " + maxPrime + "\n");
-                Console.WriteLine("Highest Prime: " + intList.Last());
+                Console.WriteLine("Highest Prime: " + prime);
             }
             
         }
@@ -88,16 +89,17 @@ namespace Week3CodeChallenge
                 long number3 = 0;
                 long total = 0;
 
-                while (number1 + number2 < maxValue)
+                while (number3 < maxValue)
                 {
                     number3 = number1 + number2;
-                    number1 = number2;
-                    number2 = number3;
+                    
 
                     if (number2 % 2 == 0)
                     {
                         total += number2;
                     }
+                    number1 = number2;
+                    number2 = number3;
                 }
                 //write output to the console
                 Console.WriteLine("EVENFIBONACCISEQUENCER\n");
@@ -152,7 +154,9 @@ namespace Week3CodeChallenge
                     {
                         
                         holdingTank = termCount;
-                    } 
+                    }
+                    //reset the flippin' variable---it counts every term for every loop otherwise!!! remember to reset counting variables if necessary
+                    termCount = 0;
                 }
 
 
